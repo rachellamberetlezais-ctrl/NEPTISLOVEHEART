@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>Ballade KREOL — NEPTISLOVEHEART</title>
+
+  <meta
+    name="description"
+    content="Découvrez Ballade KREOL de NEPTISLOVEHEART et choisissez votre plateforme d’écoute."
+  >
+
+  <meta name="theme-color" content="#171717">
+
+  <style>
+    /* ===== RÉGLAGES GÉNÉRAUX ===== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: #171717;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      padding: 24px 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffffff;
+      text-align: center;
+
+      /*
+        IMAGE DE FOND
+        Le fichier doit être dans le même dossier
+        que le fichier index.html.
+      */
+
+      background-color: #171717;
+      background-image:
+        linear-gradient(
+          rgba(0, 0, 0, 0.25),
+          rgba(0, 0, 0, 0.50)
+        ),
+        url("Anchain-crayonne.png");
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* ===== CARTE PRINCIPALE ===== */
+
+    .carte {
+      width: 100%;
+      max-width: 440px;
+      min-width: 0;
+      padding: 28px 24px;
+
+      background: rgba(15, 15, 15, 0.86);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 24px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.40);
+    }
+
+    .pochette {
+      display: block;
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      margin: 0 auto;
+
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.40);
+    }
+
+    h1 {
+      margin: 24px 0 8px;
+      font-size: clamp(1.6rem, 5vw, 2rem);
+      line-height: 1.2;
+      overflow-wrap: anywhere;
+    }
+
+    .artiste {
+      margin: 0;
+      color: #eeeeee;
+      font-size: clamp(0.85rem, 3.5vw, 1rem);
+      line-height: 1.5;
+      letter-spacing: 0.10em;
+      overflow-wrap: anywhere;
+    }
+
+    .invitation {
+      margin: 22px 0 16px;
+      color: #eeeeee;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* ===== BOUTONS DE STREAMING ===== */
+
+    .plateformes {
+      display: grid;
+      gap: 12px;
+    }
+
+    .bouton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      min-height: 50px;
+      padding: 14px 16px;
+
+      border: 1px solid transparent;
+      border-radius: 14px;
+
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.4;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+
+      transition:
+        transform 0.15s ease,
+        filter 0.15s ease;
+    }
+
+    .spotify {
+      background: #1db954;
+      color: #071b0e;
+    }
+
+    .apple {
+      background: #c91d38;
+    }
+
+    .deezer {
+      background: #7434c9;
+    }
+
+    .youtube-music {
+      background: #c81010;
+    }
+
+    .bouton[aria-disabled="true"] {
+      background: #303030;
+      color: #d8d8d8;
+      border-color: #666666;
+      cursor: default;
+    }
+
+    .note {
+      margin: 14px 0 0;
+      color: #cccccc;
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    /* ===== RÉSEAUX SOCIAUX ===== */
+
+    .reseaux-container {
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.20);
+    }
+
+    .reseaux-titre {
+      margin: 0 0 14px;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #eeeeee;
+    }
+
+    .reseaux {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .reseau {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      min-height: 46px;
+      padding: 11px 14px;
+
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.4;
+      text-decoration: none;
+
+      transition:
+        transform 0.15s ease,
+        filter 0.15s ease;
+    }
+
+    .icone-reseau {
+      display: block;
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .reseau-instagram {
+      background: linear-gradient(
+        135deg,
+        #833ab4,
+        #b92356,
+        #a63b12
+      );
+    }
+
+    .reseau-facebook {
+      background: #0866c6;
+    }
+
+    .reseau-youtube {
+      background: #c81010;
+    }
+
+    /* ===== ACCESSIBILITÉ ===== */
+
+    .bouton:focus-visible,
+    .reseau:focus-visible {
+      outline: 3px solid #ffffff;
+      outline-offset: 4px;
+    }
+
+    /* ===== PIED DE PAGE ===== */
+
+    footer {
+      margin-top: 24px;
+      color: #cccccc;
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
+
+    /* ===== PETITS TÉLÉPHONES ===== */
+
+    @media (max-width: 380px) {
+      body {
+        padding: 16px 10px;
+      }
+
+      .carte {
+        padding: 22px 16px;
+        border-radius: 18px;
+      }
+
+      .pochette {
+        max-width: 230px;
+      }
+
+      .bouton {
+        font-size: 0.95rem;
+      }
+
+      .reseaux {
+        flex-direction: column;
+      }
+
+      .reseau {
+        width: 100%;
+      }
+    }
+
+    /* ===== TABLETTES ET ORDINATEURS ===== */
+
+    @media (min-width: 768px) {
+      body {
+        padding: 40px 24px;
+      }
+
+      .carte {
+        padding: 36px 32px;
+      }
+
+      .pochette {
+        max-width: 300px;
+      }
+    }
+
+    /* ===== MODE PAYSAGE / ÉCRANS PEU HAUTS ===== */
+
+    @media (max-height: 650px) and (min-width: 600px) {
+      body {
+        align-items: flex-start;
+      }
+
+      .pochette {
+        max-width: 180px;
+      }
+    }
+
+    /* ===== EFFETS AU SURVOL AVEC UNE SOURIS ===== */
+
+    @media (hover: hover) {
+      .bouton[href]:hover,
+      .reseau:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.10);
+      }
+    }
+
+    /* ===== RÉDUCTION DES ANIMATIONS ===== */
+
+    @media (prefers-reduced-motion: reduce) {
+      .bouton,
+      .reseau {
+        transition: none;
+      }
+
+      .bouton[href]:hover,
+      .reseau:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="carte">
+
+    <!-- ===== POCHETTE ===== -->
+
+    <img
+      class="pochette"
+      src="Pochette_BK.png"
+      alt="Pochette de Ballade KREOL de NEPTISLOVEHEART"
+      decoding="async"
+    >
+
+    <!-- ===== TITRE ET ARTISTE ===== -->
+
+    <h1>Ballade KREOL</h1>
+
+    <p class="artiste">NEPTISLOVEHEART</p>
+
+    <p class="invitation">
+      Choisissez votre plateforme d’écoute
+    </p>
+
+    <!-- ===== PLATEFORMES DE STREAMING ===== -->
+
+    <nav class="plateformes" aria-label="Plateformes d’écoute">
+
+      <a
+        class="bouton spotify"
+        data-plateforme="spotify"
+        aria-disabled="true"
+      >
+        Spotify — lien à venir
+      </a>
+
+      <a
+        class="bouton apple"
+        data-plateforme="apple"
+        aria-disabled="true"
+      >
+        Apple Music — lien à venir
+      </a>
+
+      <a
+        class="bouton deezer"
+        data-plateforme="deezer"
+        aria-disabled="true"
+      >
+        Deezer — lien à venir
+      </a>
+
+      <a
+        class="bouton youtube-music"
+        data-plateforme="youtubeMusic"
+        aria-disabled="true"
+      >
+        YouTube Music — lien à venir
+      </a>
+
+    </nav>
+
+    <p class="note" id="note-plateformes">
+      Les liens d’écoute seront ajoutés dès leur disponibilité.
+    </p>
+
+    <noscript>
+      <p class="note">
+        Activez JavaScript pour afficher les liens de streaming.
+        Les réseaux sociaux restent accessibles ci-dessous.
+      </p>
+    </noscript>
+
+    <!-- ===== RÉSEAUX SOCIAUX AVEC ICÔNES ===== -->
+
+    <section
+      class="reseaux-container"
+      aria-labelledby="reseaux-titre"
+    >
+
+      <h2 id="reseaux-titre" class="reseaux-titre">
+        Retrouvez NEPTISLOVEHEART
+      </h2>
+
+      <nav class="reseaux" aria-label="Réseaux sociaux">
+
+        <!-- INSTAGRAM -->
+
+        <a
+          class="reseau reseau-instagram"
+          href="https://www.instagram.com/neptisloveheart/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram de NEPTISLOVEHEART — nouvel onglet"
+        >
+          <svg
+            class="icone-reseau"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect
+              x="3"
+              y="3"
+              width="18"
+              height="18"
+              rx="5"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+
+            <circle
+              cx="12"
+              cy="12"
+              r="4"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+
+            <circle
+              cx="17.5"
+              cy="6.5"
+              r="1.2"
+              fill="currentColor"
+            />
+          </svg>
+
+          <span>Instagram</span>
+        </a>
+
+        <!-- FACEBOOK -->
+
+        <a
+          class="reseau reseau-facebook"
+          href="https://www.facebook.com/NeptisLoveheart.music/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook de NEPTISLOVEHEART — nouvel onglet"
+        >
+          <svg
+            class="icone-reseau"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M14 22v-9h3l.5-4H14V7c0-1.2.4-2 2-2h2V1.4
+                 C17.3 1.2 16.2 1 15 1c-3 0-5 1.8-5 5v3H7v4h3v9h4z"
+            />
+          </svg>
+
+          <span>Facebook</span>
+        </a>
+
+        <!-- YOUTUBE -->
+
+        <a
+          class="reseau reseau-youtube"
+          href="https://www.youtube.com/@neptisloveheart"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Chaîne YouTube de NEPTISLOVEHEART — nouvel onglet"
+        >
+          <svg
+            class="icone-reseau"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect
+              x="2"
+              y="5"
+              width="20"
+              height="14"
+              rx="4"
+              fill="currentColor"
+            />
+
+            <path
+              d="M10 8.5L16 12L10 15.5V8.5Z"
+              fill="#c81010"
+            />
+          </svg>
+
+          <span>YouTube</span>
+        </a>
+
+      </nav>
+
+    </section>
+
+    <!-- ===== PIED DE PAGE ===== -->
+
+    <footer>
+      © NEPTISLOVEHEART<br>
+      Ballade KREOL
+    </footer>
+
+  </main>
+
+  <script>
+    /*
+      ===== LIENS À METTRE À JOUR =====
+
+      Collez le lien du morceau entre les guillemets après url: .
+
+      Exemple :
+      url: "https://open.spotify.com/track/..."
+
+      Si vous n’avez pas encore un lien, laissez :
+      url: ""
+
+      Le bouton correspondant restera désactivé.
+
+      Pour YouTube Music, utilisez le lien du morceau sur
+      music.youtube.com, et non le lien de la chaîne YouTube.
+    */
+
+    const plateformes = {
+      spotify: {
+        url: "",
+        libelle: "Écouter sur Spotify"
+      },
+
+      apple: {
+        url: "",
+        libelle: "Écouter sur Apple Music"
+      },
+
+      deezer: {
+        url: "",
+        libelle: "Écouter sur Deezer"
+      },
+
+      youtubeMusic: {
+        url: "",
+        libelle: "Écouter sur YouTube Music"
+      }
+    };
+
+    /*
+      ===== FONCTIONNEMENT AUTOMATIQUE =====
+      Ne pas modifier la suite.
+    */
+
+    let nombreDeLiensActifs = 0;
+
+    document
+      .querySelectorAll("[data-plateforme]")
+      .forEach((bouton) => {
+        const cle = bouton.dataset.plateforme;
+        const plateforme = plateformes[cle];
+        const adresse = plateforme.url.trim();
+
+        if (!adresse) return;
+
+        try {
+          const url = new URL(adresse);
+
+          if (url.protocol !== "https:") {
+            console.warn(
+              "Le lien doit commencer par https:// pour :",
+              cle
+            );
+            return;
+          }
+
+          bouton.href = url.href;
+          bouton.target = "_blank";
+          bouton.rel = "noopener noreferrer";
+
+          bouton.removeAttribute("aria-disabled");
+          bouton.textContent = plateforme.libelle;
+
+          bouton.setAttribute(
+            "aria-label",
+            plateforme.libelle + " — nouvel onglet"
+          );
+
+          nombreDeLiensActifs++;
+
+        } catch {
+          console.warn("Adresse invalide pour :", cle);
+        }
+      });
+
+    if (
+      nombreDeLiensActifs === Object.keys(plateformes).length
+    ) {
+      document.getElementById("note-plateformes").hidden = true;
+    }
+  </script>
+
+</body>
+</html>
