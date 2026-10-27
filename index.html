@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -121,6 +122,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 10px;
 
       width: 100%;
       min-height: 50px;
@@ -141,6 +143,14 @@
         filter 0.15s ease;
     }
 
+    .icone-plateforme {
+      display: block;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+
     .spotify {
       background: #1db954;
       color: #071b0e;
@@ -150,8 +160,8 @@
       background: #c91d38;
     }
 
-    .deezer {
-      background: #7434c9;
+    .amazon {
+      background: #087ea4;
     }
 
     .youtube-music {
@@ -369,36 +379,94 @@
 
     <nav class="plateformes" aria-label="Plateformes d’écoute">
 
+      <!-- SPOTIFY -->
+
       <a
         class="bouton spotify"
         data-plateforme="spotify"
         aria-disabled="true"
       >
-        Spotify — lien à venir
+        <img
+          class="icone-plateforme"
+          src="spotify.png"
+          alt=""
+          aria-hidden="true"
+        >
+
+        <span>Écouter sur Spotify</span>
       </a>
+
+      <!-- APPLE MUSIC -->
 
       <a
         class="bouton apple"
         data-plateforme="apple"
         aria-disabled="true"
       >
-        Apple Music — lien à venir
+        <img
+          class="icone-plateforme"
+          src="applemusic.png"
+          alt=""
+          aria-hidden="true"
+        >
+
+        <span>Écouter sur Apple Music</span>
       </a>
 
+      <!-- AMAZON MUSIC -->
+
       <a
-        class="bouton deezer"
-        data-plateforme="deezer"
+        class="bouton amazon"
+        data-plateforme="amazon"
         aria-disabled="true"
       >
-        Deezer — lien à venir
+        <img
+          class="icone-plateforme"
+          src="amazonmusic.png"
+          alt=""
+          aria-hidden="true"
+        >
+
+        <span>Écouter sur Amazon Music</span>
       </a>
+
+      <!-- YOUTUBE MUSIC -->
 
       <a
         class="bouton youtube-music"
         data-plateforme="youtubeMusic"
         aria-disabled="true"
       >
-        YouTube Music — lien à venir
+        <svg
+          class="icone-plateforme"
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+
+          <circle
+            cx="12"
+            cy="12"
+            r="6"
+            stroke="currentColor"
+            stroke-width="1.5"
+          />
+
+          <path
+            d="M10 8.5L16 12L10 15.5V8.5Z"
+            fill="currentColor"
+          />
+        </svg>
+
+        <span>Écouter sur YouTube Music</span>
       </a>
 
     </nav>
@@ -546,47 +614,34 @@
 
   <script>
     /*
-      ===== LIENS À METTRE À JOUR =====
-
-      Collez le lien du morceau entre les guillemets après url: .
-
-      Exemple :
-      url: "https://open.spotify.com/track/..."
-
-      Si vous n’avez pas encore un lien, laissez :
-      url: ""
-
-      Le bouton correspondant restera désactivé.
-
-      Pour YouTube Music, utilisez le lien du morceau sur
-      music.youtube.com, et non le lien de la chaîne YouTube.
+      ===== LIENS DE STREAMING =====
     */
 
     const plateformes = {
       spotify: {
-        url: "",
+        url: "https://open.spotify.com/intl-fr/track/1zyJ6OcSGPRv8rzhxAbE1s?si=769a4109bbd74c83",
         libelle: "Écouter sur Spotify"
       },
 
       apple: {
-        url: "",
+        url: "https://music.apple.com/fr/song/ballade-kreol/6822193081",
         libelle: "Écouter sur Apple Music"
       },
 
-      deezer: {
-        url: "",
-        libelle: "Écouter sur Deezer"
+      amazon: {
+        url: "https://music.amazon.fr/albums/B0HMWCRPNJ?marketplaceId=A13V1IB3VIYZZH&musicTerritory=FR&ref=dm_sh_7JUq29gnLCAWAt33cNE9hIIoB",
+        libelle: "Écouter sur Amazon Music"
       },
 
       youtubeMusic: {
-        url: "",
+        url: "https://music.youtube.com/playlist?list=OLAK5uy_ktK72bAKGZ65ae0S5XjQ2G_SqFL7rmnSg&si=SRIDzJSnH_QMf6cR",
         libelle: "Écouter sur YouTube Music"
       }
     };
 
     /*
       ===== FONCTIONNEMENT AUTOMATIQUE =====
-      Ne pas modifier la suite.
+      Les logos restent visibles dans les boutons.
     */
 
     let nombreDeLiensActifs = 0;
@@ -616,7 +671,12 @@
           bouton.rel = "noopener noreferrer";
 
           bouton.removeAttribute("aria-disabled");
-          bouton.textContent = plateforme.libelle;
+
+          const texte = bouton.querySelector("span");
+
+          if (texte) {
+            texte.textContent = plateforme.libelle;
+          }
 
           bouton.setAttribute(
             "aria-label",
