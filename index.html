@@ -19,8 +19,6 @@
   <meta name="theme-color" content="#171717">
 
   <style>
-    /* ===== RÉGLAGES GÉNÉRAUX ===== */
-
     * {
       box-sizing: border-box;
     }
@@ -44,12 +42,6 @@
       color: #ffffff;
       text-align: center;
 
-      /*
-        IMAGE DE FOND
-        Le fichier doit être dans le même dossier
-        que le fichier index.html.
-      */
-
       background-color: #171717;
       background-image:
         linear-gradient(
@@ -62,8 +54,6 @@
       background-position: center;
       background-repeat: no-repeat;
     }
-
-    /* ===== CARTE PRINCIPALE ===== */
 
     .carte {
       width: 100%;
@@ -168,6 +158,13 @@
       background: #c81010;
     }
 
+    /* Nouveau bouton Deezer */
+
+    .deezer {
+      background: #6546d7;
+      color: #ffffff;
+    }
+
     .bouton[aria-disabled="true"] {
       background: #303030;
       color: #d8d8d8;
@@ -252,15 +249,11 @@
       background: #c81010;
     }
 
-    /* ===== ACCESSIBILITÉ ===== */
-
     .bouton:focus-visible,
     .reseau:focus-visible {
       outline: 3px solid #ffffff;
       outline-offset: 4px;
     }
-
-    /* ===== PIED DE PAGE ===== */
 
     footer {
       margin-top: 24px;
@@ -268,8 +261,6 @@
       font-size: 0.75rem;
       line-height: 1.6;
     }
-
-    /* ===== PETITS TÉLÉPHONES ===== */
 
     @media (max-width: 380px) {
       body {
@@ -298,8 +289,6 @@
       }
     }
 
-    /* ===== TABLETTES ET ORDINATEURS ===== */
-
     @media (min-width: 768px) {
       body {
         padding: 40px 24px;
@@ -314,8 +303,6 @@
       }
     }
 
-    /* ===== MODE PAYSAGE / ÉCRANS PEU HAUTS ===== */
-
     @media (max-height: 650px) and (min-width: 600px) {
       body {
         align-items: flex-start;
@@ -326,8 +313,6 @@
       }
     }
 
-    /* ===== EFFETS AU SURVOL AVEC UNE SOURIS ===== */
-
     @media (hover: hover) {
       .bouton[href]:hover,
       .reseau:hover {
@@ -335,8 +320,6 @@
         filter: brightness(1.10);
       }
     }
-
-    /* ===== RÉDUCTION DES ANIMATIONS ===== */
 
     @media (prefers-reduced-motion: reduce) {
       .bouton,
@@ -469,6 +452,23 @@
         <span>Écouter sur YouTube Music</span>
       </a>
 
+      <!-- DEEZER : NOUVEAU -->
+
+      <a
+        class="bouton deezer"
+        data-plateforme="deezer"
+        aria-disabled="true"
+      >
+        <img
+          class="icone-plateforme"
+          src="deezer.png"
+          alt=""
+          aria-hidden="true"
+        >
+
+        <span>Écouter sur Deezer</span>
+      </a>
+
     </nav>
 
     <p class="note" id="note-plateformes">
@@ -482,7 +482,7 @@
       </p>
     </noscript>
 
-    <!-- ===== RÉSEAUX SOCIAUX AVEC ICÔNES ===== -->
+    <!-- ===== RÉSEAUX SOCIAUX ===== -->
 
     <section
       class="reseaux-container"
@@ -636,13 +636,13 @@
       youtubeMusic: {
         url: "https://music.youtube.com/playlist?list=OLAK5uy_ktK72bAKGZ65ae0S5XjQ2G_SqFL7rmnSg&si=SRIDzJSnH_QMf6cR",
         libelle: "Écouter sur YouTube Music"
+      },
+
+      deezer: {
+        url: "https://link.deezer.com/s/34NiMrmtEFeWo0SqedVkp",
+        libelle: "Écouter sur Deezer"
       }
     };
-
-    /*
-      ===== FONCTIONNEMENT AUTOMATIQUE =====
-      Les logos restent visibles dans les boutons.
-    */
 
     let nombreDeLiensActifs = 0;
 
